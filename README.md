@@ -26,7 +26,7 @@ In the same way as our chainsaw example, certain generators create quite a bit o
 So when is the right time to use a generator? After we've gone over the actions of each of the generators I think the answer to this query will become readily apparent and we'll walk through some case studies to help understand when each type of generator is beneficial.
 
 
-## `rails generate`
+## Rails Generate
 
 Each of the generators will follow the syntax:
 
@@ -57,7 +57,8 @@ Up until this point we have been creating our migrations by hand, this has been 
 Let's start using database migrations in our case study application and update the `posts` table. To add a new column we can use the following command:
 
 ```
-rails g migration add_published_status_to_posts published_status:string```
+rails g migration add_published_status_to_posts published_status:string
+```
 
 In the terminal you will see it creates a migration file for us: `db/migrate/20151127174031_add_published_status_to_posts.rb`. Since migration file names need to be unique the generator prepends a timestamp before the file name. In the case of the one I just ran it added `20151127174031`, you can break this timestamp down as follows: `year: 2015, month: 11, date: 27, and then the time itself`.
 
