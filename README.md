@@ -27,3 +27,5 @@ cover the magic route resources but we'll cover that more in depth later.
 choose the smallest generate that provides you with the files you need, don't over generate, the less code in your app the better. never use scaffolds, it's too much code, learn the pattern and generate a resource.
 
 Don't cover scaffolds in this...
+
+<a href='https://learn.co/lessons/rails-generators-readme' data-visibility='hidden'>View this lesson on Learn.co</a>
