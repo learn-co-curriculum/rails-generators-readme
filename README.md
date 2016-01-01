@@ -28,7 +28,7 @@ So when is the right time to use a generator? After we've gone over the actions 
 
 ## Rails Generate
 
-Each of the generators will follow the syntax:
+Each of the generators are entered into the terminal and will follow the syntax:
 
 ```
 rails generate <name of generator>
@@ -54,7 +54,7 @@ Below are the main generators that Rails offers, we'll go through examples of ea
 
 Up until this point we have been creating our migrations by hand, this has been beneficial since it's important to understand how migrations work, however Rails has a great set of migration generators with conventions that can help make managing the database schema very efficient.
 
-Let's start using database migrations in our case study application and update the `posts` table. To add a new column we can use the following command:
+Let's start using database migrations in our case study application and update the `posts` table. To add a new column called `published_status`, we can use the following command:
 
 ```
 rails g migration add_published_status_to_posts published_status:string
@@ -120,7 +120,7 @@ We can simply add in the `change_column` method like this: `change_column :posts
 
 # Model Generators
 
-This is a generator type that I use regularly, it does a great job of creating the core code needed to create a model and associated database table, without adding a lot of bloat to the application. Let's add a new model to the app called `Author`, we can use the model generator with the following CLI command:
+This is a generator type that I use regularly, it does a great job of creating the core code needed to create a model and associated database table, without adding a lot of bloat to the application. Let's add a new model to the app called `Author` with columns `name` and `genre`, we can use the model generator with the following CLI command:
 
 ```
 rails g model Author name:string genre:string bio:text
@@ -161,7 +161,7 @@ So it looks like our model has been created properly, and as you can see, this p
 
 ## Controller Generators
 
-Controller generators are great if you are creating static views or non crud related features (we'll walk through why this is the case shortly). Let's create an `admin` controller that will manage the data flow and view rendering for our admin dashboard pages:
+Controller generators are great if you are creating static views or non CRUD related features (we'll walk through why this is the case shortly). Let's create an `admin` controller that will manage the data flow and view rendering for our admin dashboard pages:
 
 ```
 rails g controller admin dashboard stats financials settings
@@ -223,7 +223,7 @@ So why are controller generators not the best for creating CRUD based features? 
 rails g controller accounts new create edit update destroy index show
 ```
 
-Immediately you may notice that this would great wasted code since it would create view templates for `create`, `update`, and `destroy` actions, so they would need to be removed immediately. They would also be setup with `get` HTTP requests, which would not be work at all. In the next section we're going to cover a better option for creating crud functionality.
+Immediately you may notice that this would great wasted code since it would create view templates for `create`, `update`, and `destroy` actions, so they would need to be removed immediately. They would also be setup with `get` HTTP requests, which would not be work at all. In the next section we're going to cover a better option for creating CRUD functionality.
 
 
 ## Resource Generators
