@@ -1,11 +1,7 @@
 tags:
   - generators
-  - migrations
-  - models
-  - controllers
-  - resources
 languages:
   - ruby
-type: 
-  - readme
-resources: 1
+  - rails
+resources: 
+  - 0
