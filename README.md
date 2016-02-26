@@ -161,7 +161,7 @@ So it looks like our model has been created properly. As you can see, this parti
 
 ## Controller Generators
 
-Controller generators are great if you are creating static views or non CRUD related features (we'll walk through why this is the case shortly). Let's create an `admin` controller that will manage the data flow and view rendering for our admin dashboard pages:
+Controller generators are great if you are creating static views or non-CRUD related features (we'll walk through why this is the case shortly). Let's create an `admin` controller that will manage the data flow and view rendering for our admin dashboard pages:
 
 ```
 rails g controller admin dashboard stats financials settings
@@ -312,4 +312,6 @@ account       GET    /accounts/:id(.:format)      accounts#show
 ## Resources
 
 [Rails Generators](http://api.rubyonrails.org/classes/Rails/Generators.html)
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-generators-readme' title='Rails Generators'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
+<a href='https://learn.co/lessons/rails-generators-readme' data-visibility='hidden'>View this lesson on Learn.co</a>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
