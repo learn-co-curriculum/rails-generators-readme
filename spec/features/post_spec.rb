@@ -33,7 +33,7 @@ describe 'form' do
 
     click_on "Update Post"
 
-    expect(page).to have_content("My edit")
+    expect(page).to have_content("My Edit")
   end
 end
 
