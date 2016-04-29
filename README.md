@@ -120,7 +120,7 @@ is essentially an index for its posts. Let's compare them side-by-side:
 <%# app/views/categories/show.html.erb %>
 
 <% @category.posts.each do |post| %>
-  <li><%= link_to post.title, post_path(post) %></li>
+  <div><%= link_to post.title, post_path(post) %></div>
 <% end %>
 ```
 
@@ -130,11 +130,12 @@ Versus:
 <%# app/views/posts/index.html.erb %>
 
 <% @posts.each do |post| %>
-  <li><%= link_to post.title, post_path(post) %></li>
+  <div><%= link_to post.title, post_path(post) %></div>
 <% end %>
 ```
 
-In fact, the only difference is what we call `each` on.
+In fact, the only difference is that we have to reach through `@category` to
+call `#each` on its `posts`.
 
 
 # Recap
