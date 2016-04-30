@@ -148,5 +148,6 @@ the rest out for us!
 [collection_proxy]: http://edgeapi.rubyonrails.org/classes/ActiveRecord/Associations/CollectionProxy.html
 
 
-<a href='https://learn.co/lessons/displaying-associations-rails'
-data-visibility='hidden'>View this lesson on Learn.co</a>
+<a href='https://learn.co/lessons/displaying-associations-rails' data-visibility='hidden'>View this lesson on Learn.co</a>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
