@@ -42,7 +42,7 @@ Once you start working with more and more complicated data sets, you will realiz
 ```ruby
 # db/seeds.rb
 
-clickbait = Category.create!(name: "Motivation")
+clickbait = Category.create!(name: "Clickbait")
 clickbait.posts.create!(title: "10 Ways You Are Already Awesome")
 clickbait.posts.create!(title: "This Yoga Stretch Cures Procrastination, Maybe")
 clickbait.posts.create!(title: "The Power of Positive Thinking and 100 Gallons of Coffee")
@@ -150,3 +150,5 @@ the rest out for us!
 
 <a href='https://learn.co/lessons/displaying-associations-rails'
 data-visibility='hidden'>View this lesson on Learn.co</a>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
