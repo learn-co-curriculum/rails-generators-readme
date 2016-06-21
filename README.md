@@ -306,7 +306,7 @@ account       GET    /accounts/:id(.:format)      accounts#show
               DELETE /accounts/:id(.:format)      accounts#destroy
 ```
 
-`resources` automatically creates each of these routes and makes them available to the controller. If you open up the `accounts_controller.rb` file you may notice something interesting: none of the actions shown in the route list are even there! However, I actually like this because it creates the minimal amount of code possible and then lets me add only the features that the app needs. We'll get into a full review of each of the options avaiable with the `resources` method in a later lesson. For right now just know that by default it creates the full suite of CRUD routes.
+`resources` automatically creates each of these routes and makes them available to the controller. If you open up the `accounts_controller.rb` file you may notice something interesting: none of the actions shown in the route list are even there! However, I actually like this because it creates the minimal amount of code possible and then lets me add only the features that the app needs. We'll get into a full review of each of the options available with the `resources` method in a later lesson. For right now just know that by default it creates the full suite of CRUD routes.
 
 
 ## Resources
