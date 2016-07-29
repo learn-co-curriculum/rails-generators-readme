@@ -138,6 +138,8 @@ invoke      factory_girl
 create        spec/factories/authors.rb
 ```
 
+If you get an error, type: ```rails g model Author name:string genre:string bio:text --no-test-framework ``` otherwise you will receive pending failures.
+
 At a high level, this has created:
 
 * A database migration that will add a table and add the columns `name`, `genre`, and `bio`.
@@ -314,3 +316,5 @@ account       GET    /accounts/:id(.:format)      accounts#show
 [Rails Generators](http://api.rubyonrails.org/classes/Rails/Generators.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
