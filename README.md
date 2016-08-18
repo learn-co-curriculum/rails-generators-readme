@@ -211,7 +211,7 @@ So what got added here? Below is a list that is a little more high level:
 
 * A view helper method file and spec helper file
 
-* A Coffeescript file for that specific JavaScripts for that controller
+* A Coffeescript file for specific JavaScripts for that controller
 
 * A `scss` file for the styles for the controller
 
@@ -263,7 +263,7 @@ invoke  resource_route
 route    resources :accounts
 ```
 
-So what does our app have now due to the generator? Below is the summary list:
+So what does our app have now due to the generator? Below is a summary:
 
 * A migration file that will create a new database table for the attributes passed to it in the generator
 
@@ -277,7 +277,7 @@ So what does our app have now due to the generator? Below is the summary list:
 
 * A view helper file
 
-* A Coffeescript file for that specific JavaScripts for that controller
+* A Coffeescript file for specific JavaScripts for that controller
 
 * A `scss` file for the styles for the controller
 
