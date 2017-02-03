@@ -28,13 +28,13 @@ So when is the right time to use a generator? After we've gone over the actions 
 
 ## Rails Generate
 
-Each of the generators are entered into the terminal and will follow the syntax:
+Each of the generators is entered into the terminal and follows the syntax:
 
 ```
 rails generate <name of generator>
 ```
 
-For efficiency sake, Rails created an alias method for `generate` and allows you to simply use `g`, so the CLI command above could be shortened to:
+For efficiency's sake, Rails created an alias method for `generate` and allows you to simply use `g`, so the CLI command above could be shortened to:
 
 ```
 rails g <name of generator>
@@ -42,7 +42,7 @@ rails g <name of generator>
 
 ## Different types of generators
 
-Below are the main generators that Rails offers. We'll go through examples of each of them in their own section:
+Below are the main generators that Rails offers. We'll go through examples of each.
 
 * Migrations
 * Models
@@ -317,3 +317,5 @@ account       GET    /accounts/:id(.:format)      accounts#show
 [Rails Generators](http://api.rubyonrails.org/classes/Rails/Generators.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
