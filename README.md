@@ -52,7 +52,7 @@ Below are the main generators that Rails offers. We'll go through examples of ea
 
 ## Migration Generators
 
-Up until this point we have been creating our migrations by hand; this has been beneficial since it's important to understand how migrations work. However, Rails has a great set of migration generators with conventions that can help make managing the database schema very efficient.
+So far we have been creating migrations by hand, ;since it's important to understand how they work. However, Rails has a great set of migration generators with conventions that can help make managing the database schema very efficient.
 
 Let's start using database migrations in our case study application and update the `posts` table. To add a new column called `published_status`, we can use the following command:
 
@@ -317,3 +317,5 @@ account       GET    /accounts/:id(.:format)      accounts#show
 [Rails Generators](http://api.rubyonrails.org/classes/Rails/Generators.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
