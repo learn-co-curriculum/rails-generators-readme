@@ -62,7 +62,7 @@ rails g migration add_published_status_to_posts published_status:string
 
 In the terminal you will see it creates a migration file for us: `db/migrate/20151127174031_add_published_status_to_posts.rb`. Since migration file names need to be unique, the generator prepends a timestamp before the file name. In the case of the migration I just ran, it added `20151127174031`. You can break this timestamp down as follows: `year: 2015, month: 11, date: 27, and then the time itself`.
 
-Ready to see something pretty cool? Open up the file it created, you can find it in the `db/migrate` directory, I've placed what it created for the example app below:
+Ready to see something pretty cool? Open up the file it created, you can find it in the `db/migrate` directory. I've placed what it created for the example app below:
 
 ```ruby
 class AddPublishedStatusToPosts < ActiveRecord::Migration
@@ -317,3 +317,5 @@ account       GET    /accounts/:id(.:format)      accounts#show
 [Rails Generators](http://api.rubyonrails.org/classes/Rails/Generators.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
