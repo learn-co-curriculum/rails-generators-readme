@@ -21,9 +21,9 @@ Extending our example from above, why wouldn't you use a chainsaw to build a mod
 
 ![Chainsaw Example](https://s3.amazonaws.com/flatiron-bucket/readme-lessons/chainsaw_example.jpg)
 
-In the same way as our chainsaw example, certain generators create quite a bit of code, and if that code is not going to be used it will clutter the application code and cause confusion for future developers. A few years ago I took over as the lead developer for a large legacy Rails application. The previous developer had relied on generators, even when they shouldn't have been used, and the end result was that it took months to simply figure out what code was being used and what was 'garbage' code that simply came from the generators.
+In the same way as our chainsaw example, certain generators create quite a bit of code. If that code is not going to be used, it will clutter the application code and cause confusion for future developers. A few years ago I took over as the lead developer for a large legacy Rails application. The previous developer had relied on generators, even when they shouldn't have been used, and the end result was that it took months to simply figure out what code was being used and what was 'garbage' code that simply came from the generators.
 
-So when is the right time to use a generator? After we've gone over the actions of each of the generators I think the answer to this query will become readily apparent and we'll walk through some case studies to help understand when each type of generator is beneficial.
+So when is the right time to use a generator? After we've gone over the actions of each of the generators, the answer to this query will become readily apparent and we'll walk through some case studies to help understand when each type of generator is beneficial.
 
 
 ## Rails Generate
@@ -317,3 +317,5 @@ account       GET    /accounts/:id(.:format)      accounts#show
 [Rails Generators](http://api.rubyonrails.org/classes/Rails/Generators.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
