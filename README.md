@@ -15,7 +15,7 @@ As nice as it is to use the generators to save time, they also provide some addi
 
 ## Abusing Generators
 
-So if generators are so amazing, why wouldn't we always want to use them all of the time? I'll answer your question with another question: a chainsaw is a wonderful tool, why wouldn't you use it for every job you have around the house? The answer to both questions is the same: great tools are only great tools if they are matched with the right task. In the same way that you should only use a chainsaw when you have a job that requires it, generators should only be used when they are needed.
+So if generators are so amazing, why wouldn't we always want to use them? I'll answer your question with another question: a chainsaw is a wonderful tool, so why wouldn't you use it for every job you have around the house? The answer to both questions is the same: great tools are only great tools if they are matched with the right task. In the same way that you should only use a chainsaw when you have a job that requires it, generators should only be used when they are needed.
 
 Extending our example from above, why wouldn't you use a chainsaw to build a model airplane?
 
@@ -316,4 +316,4 @@ account       GET    /accounts/:id(.:format)      accounts#show
 
 [Rails Generators](http://api.rubyonrails.org/classes/Rails/Generators.html)
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
+<p class='util--hide'>View <a href='https://learn.co/lessons/rails-generators-readme'>Rails Generators</a> on Learn.co and start learning to code for free.</p>
