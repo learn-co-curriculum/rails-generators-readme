@@ -237,13 +237,8 @@ rails g resource Account name:string payment_status:string
 This creates quite a bit of code for us. Below is the full list:
 
 ```
-invoke  active_record
-create    db/migrate/20151127233150_create_accounts.rb
-create    app/models/account.rb
 invoke    rspec
 create      spec/models/account_spec.rb
-invoke      factory_girl
-create        spec/factories/accounts.rb
 invoke  controller
 create    app/controllers/accounts_controller.rb
 invoke    erb
