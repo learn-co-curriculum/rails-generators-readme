@@ -21,28 +21,31 @@ Extending our example from above, why wouldn't you use a chainsaw to build a mod
 
 ![Chainsaw Example](https://s3.amazonaws.com/flatiron-bucket/readme-lessons/chainsaw_example.jpg)
 
-In the same way as our chainsaw example, certain generators create quite a bit of code, and if that code is not going to be used it will clutter the application code and cause confusion for future developers. A few years ago I took over as the lead developer for a large legacy Rails application. The previous developer had relied on generators, even when they shouldn't have been used, and the end result was that it took months to simply figure out what code was being used and what was 'garbage' code that simply came from the generators.
+In the same manner as our chainsaw example, certain generators create quite a bit of code. If that code is not going to be used, it will needlessly clutter the application code and cause confusion for future developers. One of our instructors recounts the following all-too-familiar anecdote:
+>A few years ago I took over as the lead developer for a large legacy Rails application. The previous developer had relied on generators, even when they shouldn't have been used, and the end result was that it took months to simply figure out what code was being used and what was 'garbage' code that simply came from the generators.
 
-So when is the right time to use a generator? After we've gone over the actions of each of the generators I think the answer to this query will become readily apparent and we'll walk through some case studies to help understand when each type of generator is beneficial.
+So when is the right time to use a generator? After we've gone over the actions of each of the generators, the answer to this query should become readily apparent. In addition, we'll walk through some case studies to help understand when each type of generator is beneficial.
 
 
 ## Rails Generate
 
-Each of the generators are entered into the terminal and will follow the syntax:
+All of the Rails generators are entered as commands into the terminal and will follow this syntax:
 
 ```
-rails generate <name of generator>
+rails generate <name of generator> <options> --no-test-framework
 ```
 
-For efficiency sake, Rails created an alias method for `generate` and allows you to simply use `g`, so the CLI command above could be shortened to:
+`--no-test-framework` is a flag that tells the generator not to create any tests for the newly-generated models, controllers, etc. When you're working on your own Rails applications, you don't need the flag — it's quite helpful for quickly stubbing out a test suite. However, it's necessary for Learn.co labs because we don't want Rails adding additional tests on top of the test suite that already comes with the lesson.
+
+For efficiency's sake, Rails aliased the `generate` method to `g`, so the CLI command above could be shortened to:
 
 ```
-rails g <name of generator>
+rails g <name of generator> <options> --no-test-framework
 ```
 
 ## Different types of generators
 
-Below are the main generators that Rails offers. We'll go through examples of each of them in their own section:
+Below are the main generators that Rails offers. We'll go through examples of each:
 
 * Migrations
 * Models
@@ -52,17 +55,17 @@ Below are the main generators that Rails offers. We'll go through examples of ea
 
 ## Migration Generators
 
-Up until this point we have been creating our migrations by hand; this has been beneficial since it's important to understand how migrations work. However, Rails has a great set of migration generators with conventions that can help make managing the database schema very efficient.
+Up to this point, we've been creating our migrations by hand. This has been beneficial because it's important to understand how migrations work. However, Rails has a great set of migration generators with conventions that can help make managing the database schema very efficient.
 
 Let's start using database migrations in our case study application and update the `posts` table. To add a new column called `published_status`, we can use the following command:
 
 ```
-rails g migration add_published_status_to_posts published_status:string
+rails g migration add_published_status_to_posts published_status:string --no-test-framework
 ```
 
 In the terminal you will see it creates a migration file for us: `db/migrate/20151127174031_add_published_status_to_posts.rb`. Since migration file names need to be unique, the generator prepends a timestamp before the file name. In the case of the migration I just ran, it added `20151127174031`. You can break this timestamp down as follows: `year: 2015, month: 11, date: 27, and then the time itself`.
 
-Ready to see something pretty cool? Open up the file it created, you can find it in the `db/migrate` directory, I've placed what it created for the example app below:
+Ready to see something pretty cool? Open up the file it created, which you can find in the `db/migrate` directory. It should look something like this:
 
 ```ruby
 class AddPublishedStatusToPosts < ActiveRecord::Migration
@@ -79,7 +82,7 @@ To update the database schema you can run `rake db:migrate` and the schema will 
 Oh no, we made a mistake, let's get rid of that column name with another migration:
 
 ```
-rails g migration remove_published_status_from_posts published_status:string
+rails g migration remove_published_status_from_posts published_status:string --no-test-framework
 ```
 
 If you open up this migration file, you will see the following code:
@@ -95,13 +98,13 @@ end
 So we can add and remove columns automatically by running migration generators. What else can we do? Let's walk through a real world scenario:
 
 ```
-rails g migration add_post_status_to_posts post_status:boolean
+rails g migration add_post_status_to_posts post_status:boolean --no-test-framework
 ```
 
 With this migration we'll add the column `post_status` with the data type of boolean. While adding this new attribute to one of the forms we discover that the column really needs to be of type `string` instead of being a `boolean`. Let's see if we can use the same syntax for the generator:
 
 ```
-rails g migration change_post_status_data_type_to_posts post_status:string
+rails g migration change_post_status_data_type_to_posts post_status:string --no-test-framework
 ```
 
 This won't automatically create the `change_column` method; the file will look something like this:
@@ -120,10 +123,10 @@ We can simply add in the `change_column` method like this: `change_column :posts
 
 # Model Generators
 
-This is a generator type that I use regularly. It does a great job of creating the core code needed to create a model and associated database table without adding a lot of bloat to the application. Let's add a new model to the app called `Author` with columns `name` and `genre`, we can use the model generator with the following CLI command:
+This is a generator type that gets used regularly. It does a great job of creating the core code needed to create a model and associated database table without adding a lot of bloat to the application. Let's add a new model to the app called `Author` with columns `name` and `genre`, we can use the model generator with the following CLI command:
 
 ```
-rails g model Author name:string genre:string bio:text
+rails g model Author name:string genre:string bio:text --no-test-framework
 ```
 
 Running this generator will create the following files for us:
@@ -132,19 +135,11 @@ Running this generator will create the following files for us:
 invoke  active_record
 create    db/migrate/20151127225446_create_authors.rb
 create    app/models/author.rb
-invoke    rspec
-create      spec/models/author_spec.rb
-invoke      factory_girl
-create        spec/factories/authors.rb
 ```
 
 At a high level, this has created:
-
 * A database migration that will add a table and add the columns `name`, `genre`, and `bio`.
-
 * A model file that will inherit from `ActiveRecord::Base`
-
-* Some mocked RSpec test files
 
 After running `rake db:migrate` it will add the table to the database schema. Let's test this out in the console:
 
@@ -156,7 +151,7 @@ Author.create!(name: "Stephen King", genre: "Horror", bio: "Bio details go here"
 => #<Author id: 1, name: "Stephen King", genre: "Horror", bio: "Bio details go here", created_at: "2015-11-27 22:59:14", updated_at: "2015-11-27 22:59:14">
 ```
 
-So it looks like our model has been created properly. As you can see, this particular generator created a few different pieces of functionality with a single command and it did it with creating minimal code bloat.
+So it looks like our model has been created properly. As you can see, this particular generator created a few different pieces of functionality with a single command, and it did it with creating minimal code bloat.
 
 
 ## Controller Generators
@@ -164,7 +159,7 @@ So it looks like our model has been created properly. As you can see, this parti
 Controller generators are great if you are creating static views or non-CRUD related features (we'll walk through why this is the case shortly). Let's create an `admin` controller that will manage the data flow and view rendering for our admin dashboard pages:
 
 ```
-rails g controller admin dashboard stats financials settings
+rails g controller admin dashboard stats financials settings --no-test-framework
 ```
 
 This will create a ton of code! Below is the full list:
@@ -181,22 +176,13 @@ create    app/views/admin/dashboard.html.erb
 create    app/views/admin/stats.html.erb
 create    app/views/admin/financials.html.erb
 create    app/views/admin/settings.html.erb
-invoke  rspec
-create    spec/controllers/admin_controller_spec.rb
-create    spec/views/admin
-create    spec/views/admin/dashboard.html.erb_spec.rb
-create    spec/views/admin/stats.html.erb_spec.rb
-create    spec/views/admin/financials.html.erb_spec.rb
-create    spec/views/admin/settings.html.erb_spec.rb
 invoke  helper
 create    app/helpers/admin_helper.rb
-invoke    rspec
-create      spec/helpers/admin_helper_spec.rb
 invoke  assets
 invoke    coffee
-create      app/assets/javascripts/admin.coffee
+create      app/assets/javascripts/admin.js.coffee
 invoke    scss
-create      app/assets/stylesheets/admin.scss
+create      app/assets/stylesheets/admin.css.scss
 ```
 
 So what got added here? Below is a list that is a little more high level:
@@ -207,9 +193,7 @@ So what got added here? Below is a list that is a little more high level:
 
 * A new directory for all of the view templates along with a view template file for each of the controller actions that we declared in the generator command
 
-* A number of view based tests
-
-* A view helper method file and spec helper file
+* A view helper method file
 
 * A Coffeescript file for specific JavaScripts for that controller
 
@@ -220,7 +204,7 @@ As you can see, this one generator created a large number of files and code. Thi
 So why are controller generators not the best for creating CRUD based features? What would have happened if we wanted to create a controller that managed the CRUD flow for managing accounts? Here would be one implementation:
 
 ```
-rails g controller accounts new create edit update destroy index show
+rails g controller accounts new create edit update destroy index show --no-test-framework
 ```
 
 Immediately you may notice that this would create wasted code since it would create view templates for `create`, `update`, and `destroy` actions, so they would need to be removed immediately. They would also be setup with `get` HTTP requests, which would not work at all. In the next section we're going to cover a better option for creating CRUD functionality.
@@ -231,36 +215,28 @@ Immediately you may notice that this would create wasted code since it would cre
 If you are building an API, using a front end MVC framework, or simply want to manually create your views, the `resource` generator is a great option for creating the code. Since we didn't create the `Account` controller we mentioned before, let's build it here:
 
 ```
-rails g resource Account name:string payment_status:string
+rails g resource Account name:string payment_status:string --no-test-framework
 ```
 
 This creates quite a bit of code for us. Below is the full list:
 
 ```
 invoke  active_record
-create    db/migrate/20151127233150_create_accounts.rb
+create    db/migrate/20170712011124_create_accounts.rb
 create    app/models/account.rb
-invoke    rspec
-create      spec/models/account_spec.rb
-invoke      factory_girl
-create        spec/factories/accounts.rb
 invoke  controller
 create    app/controllers/accounts_controller.rb
 invoke    erb
 create      app/views/accounts
-invoke    rspec
-create      spec/controllers/accounts_controller_spec.rb
 invoke    helper
 create      app/helpers/accounts_helper.rb
-invoke      rspec
-create        spec/helpers/accounts_helper_spec.rb
 invoke    assets
 invoke      coffee
-create        app/assets/javascripts/accounts.coffee
+create        app/assets/javascripts/accounts.js.coffee
 invoke      scss
-create        app/assets/stylesheets/accounts.scss
+create        app/assets/stylesheets/accounts.css.scss
 invoke  resource_route
-route    resources :accounts
+ route    resources :accounts
 ```
 
 So what does our app have now due to the generator? Below is a summary:
@@ -268,8 +244,6 @@ So what does our app have now due to the generator? Below is a summary:
 * A migration file that will create a new database table for the attributes passed to it in the generator
 
 * A model file that inherits from `ActiveRecord::Base`
-
-* Tests
 
 * A controller file that inherits from `ApplicationController`
 
