@@ -32,3 +32,4 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+Gemfile.lock
