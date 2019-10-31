@@ -133,15 +133,27 @@ Running this generator will create the following files for us:
 
 ```
 invoke  active_record
-create    db/migrate/20151127225446_create_authors.rb
+create    db/migrate/20190618010724_create_authors.rb
+create    app/models/application_record.rb
 create    app/models/author.rb
 ```
 
 At a high level, this has created:
 * A database migration that will add a table and add the columns `name`, `genre`, and `bio`.
-* A model file that will inherit from `ActiveRecord::Base`
+* A model file that will inherit from `ApplicationRecord` (as of Rails 5)
 
-After running `rake db:migrate` it will add the table to the database schema. Let's test this out in the console:
+**Note:** Up to Rails 4.2, all models inherited from `ActiveRecord::Base`. Since Rails 5, all models inherit from `ApplicationRecord`. If you've have used an older version of Rails in the past, you may be wondering what happened to `ActiveRecord::Base`? Well, not a lot has changed, actually. This file is automatically added to models in Rails 5 applications:
+
+```ruby
+# app/models/application_record.rb
+class ApplicationRecord < ActiveRecord::Base
+  self.abstract_class = true
+end
+```
+
+It allow more flexibility if you want to add some extra functionality to Active Record.
+
+To continue with the code-along, after running `rake db:migrate` it will add the table to the database schema. Let's test this out in the console:
 
 ```
 Author.all
