@@ -255,7 +255,7 @@ So what does our app have now due to the generator? Below is a summary:
 
 * A migration file that will create a new database table for the attributes passed to it in the generator
 
-* A model file that inherits from `ActiveRecord::Base`
+* A model file that inherits from `ApplicationRecord` (as of Rails 5; see Note above)
 
 * A controller file that inherits from `ApplicationController`
 
