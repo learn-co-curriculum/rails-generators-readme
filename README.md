@@ -35,7 +35,7 @@ All of the Rails generators are entered as commands into the terminal and will f
 rails generate <name of generator> <options> --no-test-framework
 ```
 
-`--no-test-framework` is a flag that tells the generator not to create any tests for the newly-generated models, controllers, etc. When you're working on your own Rails applications, you don't need the flag — it's quite helpful for quickly stubbing out a test suite. However, it's necessary for Learn.co labs because we don't want Rails adding additional tests on top of the test suite that already comes with the lesson.
+`--no-test-framework` is a flag that tells the generator not to create any tests for the newly-generated models, controllers, etc. When you're working on your own Rails applications, you don't need the flag — it's quite helpful for quickly stubbing out a test suite. However, it's necessary for labs because we don't want Rails adding additional tests on top of the test suite that already comes with the lesson.
 
 For efficiency's sake, Rails aliased the `generate` method to `g`, so the CLI command above could be shortened to:
 
