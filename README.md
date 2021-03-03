@@ -121,7 +121,7 @@ We can simply add in the `change_column` method like this: `change_column :posts
 [Full migration documentation](http://api.rubyonrails.org/classes/ActiveRecord/Migration.html)
 
 
-# Model Generators
+## Model Generators
 
 This is a generator type that gets used regularly. It does a great job of creating the core code needed to create a model and associated database table without adding a lot of bloat to the application. Let's add a new model to the app called `Author` with columns `name`, `bio`, and `genre`, we can use the model generator with the following CLI command:
 
