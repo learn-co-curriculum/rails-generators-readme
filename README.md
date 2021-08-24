@@ -62,8 +62,8 @@ when each type of generator is beneficial.
 All of the Rails generators are entered as commands into the terminal and will
 follow this syntax:
 
-```sh
-rails generate <name of generator> <options> --no-test-framework
+```console
+$ rails generate <name of generator> <options> --no-test-framework
 ```
 
 `--no-test-framework` is a flag that tells the generator not to create any tests
@@ -76,8 +76,8 @@ with the lesson.
 For efficiency's sake, Rails aliased the `generate` method to `g`, so the CLI
 command above could be shortened to:
 
-```sh
-rails g <name of generator> <options> --no-test-framework
+```console
+$ rails g <name of generator> <options> --no-test-framework
 ```
 
 ## Different types of generators
@@ -101,8 +101,8 @@ Let's start using database migrations in our case study application and update
 the `posts` table. To add a new column called `published_status`, we can use the
 following command:
 
-```sh
-rails g migration add_published_status_to_posts published_status:string --no-test-framework
+```console
+$ rails g migration add_published_status_to_posts published_status:string --no-test-framework
 ```
 
 In the terminal you will see it creates a migration file for us:
@@ -141,8 +141,8 @@ reflect the change.
 Oh no, we made a mistake, let's get rid of that column name with another
 migration:
 
-```sh
-rails g migration remove_published_status_from_posts published_status:string --no-test-framework
+```console
+$ rails g migration remove_published_status_from_posts published_status:string --no-test-framework
 ```
 
 If you open up this migration file, you will see the following code:
@@ -158,8 +158,8 @@ end
 So we can add and remove columns automatically by running migration generators.
 What else can we do? Let's walk through a real world scenario:
 
-```sh
-rails g migration add_post_status_to_posts post_status:boolean --no-test-framework
+```console
+$ rails g migration add_post_status_to_posts post_status:boolean --no-test-framework
 ```
 
 With this migration we'll add the column `post_status` with the data type of
@@ -167,8 +167,8 @@ boolean. While adding this new attribute to one of the forms we discover that
 the column really needs to be of type `string` instead of being a `boolean`.
 Let's see if we can use the same syntax for the generator:
 
-```sg
-rails g migration change_post_status_data_type_to_posts post_status:string --no-test-framework
+```console
+$ rails g migration change_post_status_data_type_to_posts post_status:string --no-test-framework
 ```
 
 This won't automatically create the `change_column` method; the file will look
@@ -182,8 +182,16 @@ end
 ```
 
 We can simply add in the `change_column` method like this:
-`change_column :posts, :post_status, :string` and after running
-`rake db:migrate` our schema will be updated.
+
+```ruby
+class ChangePostStatusDataTypeToPosts < ActiveRecord::Migration
+  def change
+    change_column :posts, :post_status, :string
+  end
+end
+```
+
+Then after running `rake db:migrate` our schema will be updated.
 
 [Full migration documentation](http://api.rubyonrails.org/classes/ActiveRecord/Migration.html)
 
@@ -195,13 +203,13 @@ without adding a lot of bloat to the application. Let's add a new model to the
 app called `Author` with columns `name`, `bio`, and `genre`, we can use the
 model generator with the following CLI command:
 
-```sh
-rails g model Author name:string genre:string bio:text --no-test-framework
+```console
+$ rails g model Author name:string genre:string bio:text --no-test-framework
 ```
 
 Running this generator will create the following files for us:
 
-```txt
+```console
 invoke  active_record
 create    db/migrate/20190618010724_create_authors.rb
 create    app/models/application_record.rb
@@ -252,13 +260,13 @@ related features (we'll walk through why this is the case shortly). Let's create
 an `admin` controller that will manage the data flow and view rendering for our
 admin dashboard pages:
 
-```sh
-rails g controller admin dashboard stats financials settings --no-test-framework
+```console
+$ rails g controller admin dashboard stats financials settings --no-test-framework
 ```
 
 This will create a ton of code! Below is the full list:
 
-```txt
+```console
 create  app/controllers/admin_controller.rb
  route  get 'admin/settings'
  route  get 'admin/financials'
@@ -282,16 +290,12 @@ create      app/assets/stylesheets/admin.css.scss
 So what got added here? Below is a list that is a little more high level:
 
 - A controller file that will inherit from `ApplicationController`
-
-- A set of routes to each of the generator arguments: `dashboard`, `stats`, `financials`, and `settings`
-
+- A set of routes to each of the generator arguments: `dashboard`, `stats`,
+  `financials`, and `settings`
 - A new directory for all of the view templates along with a view template file
   for each of the controller actions that we declared in the generator command
-
 - A view helper method file
-
 - A Coffeescript file for specific JavaScripts for that controller
-
 - An `scss` file for the styles for the controller
 
 As you can see, this one generator created a large number of files and code.
@@ -302,8 +306,8 @@ So why are controller generators not the best for creating CRUD based features?
 What would have happened if we wanted to create a controller that managed the
 CRUD flow for managing accounts? Here would be one implementation:
 
-```sh
-rails g controller accounts new create edit update destroy index show --no-test-framework
+```console
+$ rails g controller accounts new create edit update destroy index show --no-test-framework
 ```
 
 Immediately you may notice that this would create wasted code since it would
@@ -319,13 +323,13 @@ manually create your views, the `resource` generator is a great option for
 creating the code. Since we didn't create the `Account` controller we mentioned
 before, let's build it here:
 
-```sh
-rails g resource Account name:string payment_status:string --no-test-framework
+```console
+$ rails g resource Account name:string payment_status:string --no-test-framework
 ```
 
 This creates quite a bit of code for us. Below is the full list:
 
-```txt
+```console
 invoke  active_record
 create    db/migrate/20170712011124_create_accounts.rb
 create    app/models/account.rb
@@ -348,19 +352,12 @@ So what does our app have now due to the generator? Below is a summary:
 
 - A migration file that will create a new database table for the attributes
   passed to it in the generator
-
 - A model file that inherits from `ApplicationRecord` (as of Rails 5; see Note above)
-
 - A controller file that inherits from `ApplicationController`
-
 - A view directory, but no view template files
-
 - A view helper file
-
 - A Coffeescript file for specific JavaScripts for that controller
-
 - A `scss` file for the styles for the controller
-
 - A full `resources` call in the `routes.rb` file
 
 The `resource` generator is a smart generator that creates some of the core
@@ -376,13 +373,13 @@ into?
 There's an easy way to find out. Let's run `rake routes` with a filter so it
 only shows us the routes for accounts:
 
-```sh
-rake routes | grep account
+```console
+$ rake routes | grep account
 ```
 
 This `rake` command will produce the following output in the console:
 
-```txt
+```console
 accounts      GET    /accounts(.:format)          accounts#index
               POST   /accounts(.:format)          accounts#create
 new_account   GET    /accounts/new(.:format)      accounts#new
